@@ -1,0 +1,2 @@
+﻿  source.cpp
+C:\Users\warre\Desktop\content\github\cpp-GUI-project\visual_studio_directory\visual_studio_directory\source.cpp(20,10): fatal  error C1083: Cannot open include file: 'SFML/Graphics.hpp': No such file or directory
