@@ -31,6 +31,10 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            //close game if escape 
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {//kan ook (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+                window.close();
+            }
         }
         //frames
         window.clear();
