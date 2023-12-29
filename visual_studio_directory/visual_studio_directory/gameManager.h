@@ -20,19 +20,16 @@ Any live cell with more than three live neighbours dies, as if by overpopulation
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 	
 */
-
-
 using namespace std;
+
 class GameManager {
 private:
+
 	int amountOfCells=0;
 	vector<Cell> cells; 
 	const static int screenSizeX = 1920;
 	const static int screenSizeY = 1080; 
 	const static int sideSize = 8;
-
-
-
 
 public:
 	//cells will be 8 by 8
@@ -46,19 +43,41 @@ public:
 	}
 
 	void nextTick(){
-		for (Cell blokje : cells) {
+		for (Cell &blokje : cells) {
 			//check rule 1-4
-		
-		
+			vector<Cell> neighbours = getNeighbours(blokje);
+			int amountAlive = 0;
+			for (Cell& neighbour : neighbours) {
+				if (neighbour.getAliveState()) {
+					amountAlive++;
+				}
+			}
+			if (blokje.getAliveState()) {//levende cell
+				//rule 1:
+				if (amountAlive < 2) {
+					blokje.setAliveState(false);
+				}
+				//rule 2:
+				else if (amountAlive == 2 || amountAlive == 3) {
+					//do nothing
+				}
+				//rule 3:
+				else if (amountAlive > 3) {
+					blokje.setAliveState(false);
+				}
+			}
+			else {//dode cell
+				//rule 4:
+				if (amountAlive == 3) {
+					blokje.setAliveState(true);
+				}
+			}
 		}
-	
-	
 	}
 
 	void addCell(Cell cell);
 	vector<Cell> getAllCells();
 	vector<Cell> getNeighbours(Cell cell);
-
 
 };
 

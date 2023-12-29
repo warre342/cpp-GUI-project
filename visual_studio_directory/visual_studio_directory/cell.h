@@ -38,5 +38,11 @@ public:
 		this->x = x;
 		this->y = y;
 	}
+	bool getAliveState() {
+		return levend; 
+	}
+	void setAliveState(bool a) {
+		levend = a;
+	}
 
 };
