@@ -21,7 +21,10 @@ int main()
    
     //framecapping
     sf::Clock klokje; 
-    const sf::Time frameTime = sf::seconds(1.0f / 60.0f);
+    const sf::Time frameTime = sf::seconds(1.0f / 60.0f);//wordt 1 game tick
+
+    //game logic
+    
 
 
     while (window.isOpen())
