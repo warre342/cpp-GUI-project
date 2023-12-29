@@ -27,4 +27,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\cellAlive.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\cellDead.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\fist.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\dieseldoubt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\Arial.ttf" />
+  </ItemGroup>
 </Project>

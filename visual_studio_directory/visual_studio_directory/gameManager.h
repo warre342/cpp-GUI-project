@@ -106,6 +106,7 @@ vector<Cell> GameManager::getNeighbours(Cell cell) {
 			}
 		}		
 	}
+	return neighbour;
 }
 
 

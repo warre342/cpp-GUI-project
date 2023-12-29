@@ -149,6 +149,15 @@
     <ClInclude Include="cell.h" />
     <ClInclude Include="gameManager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\cellAlive.jpg" />
+    <Image Include="images\cellDead.jpg" />
+    <Image Include="images\dieseldoubt.png" />
+    <Image Include="images\fist.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="fonts\Arial.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
