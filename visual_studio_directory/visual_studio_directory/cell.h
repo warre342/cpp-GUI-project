@@ -14,10 +14,10 @@ public:
 	}
 
 	int getX() {
-		return x;
+		return this->x;
 	}
 	int getY() {
-		return y;
+		return this->y;
 	}
 
 	void setXY(int x, int y) {
@@ -25,7 +25,7 @@ public:
 		this->y = y;
 	}
 	bool getAliveState() {
-		return levend; 
+		return this->levend; 
 	}
 	void setAliveState(bool a) {
 		this->levend = a;

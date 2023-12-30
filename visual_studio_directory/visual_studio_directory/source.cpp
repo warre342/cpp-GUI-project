@@ -49,7 +49,7 @@ int main()
 }
 
 
-void drawCells( vector<Cell> cells, sf::RenderWindow &window) {
+void drawCells(vector<Cell> cells, sf::RenderWindow &window) {
     int teller = 0;
     sf::Texture aliveTexture;
     sf::Texture deadTexture;

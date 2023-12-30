@@ -23,37 +23,38 @@ private:
 public:
 	//cells will be sideSize x SideSize
 	GameManager() {
-		for (int x = 0; x < screenSizeX; x += sideSize) {//somehow +1 zorgt ervoor dat ze er allemaal opstaan, momenteel geen zin om het uit te zoeken
-			for (int y = 0; y < screenSizeY; y += sideSize) {//volgens berekeningen moeten het 144 objects zijn maar nu heb ik 170
+		for (int x = 0; x < screenSizeX; x += sideSize) {
+			for (int y = 0; y < screenSizeY; y += sideSize) {
 				Cell blokje(x, y);
-				if (x <= 960 + sideSize && x >= 960 -sideSize && y == 600) { blokje.maakLevend(); }
-				else if (x <= 960 && x >= 960-2*sideSize && y == 600-sideSize) { blokje.maakLevend(); }
+				if (x <= 960 + sideSize && x >= 960 -sideSize && y == 600-sideSize) { blokje.maakLevend(); }
+				else if (x <= 960 && x >= 960-2*sideSize && y == 600) { blokje.maakLevend(); }
 				cells.push_back(blokje);
 			}
 		}	
 	}
 
 	void nextTick(){
+
+		vector<int> amountNeighboursAllCells;
+
+		for (const Cell &blokje : cells) {
+			amountNeighboursAllCells.push_back(getNeighbours(blokje));
+		}
+		int teller = 0; 
 		for (Cell &blokje : cells) {
 			//check rule 1-4
-			vector<Cell> neighbours = getNeighbours(blokje);
-			int amountAlive = 0;
-			for (Cell& neighbour : neighbours) {
-				if (neighbour.getAliveState()) {
-					amountAlive++;
-				}
-			}
+			int amountAlive = amountNeighboursAllCells[teller];
 			if (blokje.getAliveState()) {//levende cell
 				//rule 1:
 				if (amountAlive < 2) {
 					blokje.setAliveState(false);
 				}
 				//rule 2:
-				else if (amountAlive == 2 || amountAlive == 3) {
+				else if ((amountAlive == 2 )||( amountAlive == 3)) {//wordt nooit geroepen somehow
 					//do nothing
 				}
 				//rule 3:
-				else if (amountAlive > 3) {
+				else if (amountAlive > 3) {//wordt ook nooit geroepen
 					blokje.setAliveState(false);
 				}
 			}
@@ -63,12 +64,13 @@ public:
 					blokje.setAliveState(true);
 				}
 			}
+			teller++;
 		}
 	}
 
 	vector<Cell> getAllCells();
 	float getSideSize();
-	vector<Cell> getNeighbours(Cell cell);
+	int getNeighbours(Cell cell);
 
 
 };
@@ -81,24 +83,27 @@ float GameManager::getSideSize() {
 	return sideSize + 0.0f;
 }
 
-vector<Cell> GameManager::getNeighbours(Cell cell) {
-	vector<Cell> neighbour;
+int GameManager::getNeighbours(Cell cell) {
 	int x = cell.getX();
 	int y = cell.getY();
-	//deze functie let niet op edge cases waar een cel al tegen de rand zit
-	//mss als je tegen de rand zit de cel aan de andere kant van het scherm nemen
-	for (int i = x - sideSize; i < x + sideSize; i += sideSize) {//over alle blokjes gaan in een 3x3 zonder de middelste te pakken
-		for (int j = y - sideSize; j < y + sideSize; j+= sideSize) {
-			if (i != x && j != y) {
-				for (Cell &blokje : cells) {
-					if (blokje.getX()==i && blokje.getY()==j) {
-						neighbour.push_back(cell);
-					}
+	int aliveTeller = 0;
+
+	// Deze functie let niet op edge cases waar een cel al tegen de rand zit
+	// Misschien als je tegen de rand zit de cel aan de andere kant van het scherm nemen
+	for (int i = x - sideSize; i < x + sideSize; i += sideSize) { // Over alle blokjes gaan in een 3x3 zonder de middelste te pakken
+		for (int j = y - sideSize; j < y + sideSize; j += sideSize) {
+			for (Cell& blokje : cells) {
+				if (blokje.getX() == cell.getX() && blokje.getY() == cell.getY()) {
+					// Do nothing
+				}
+				else if (blokje.getX() == i && blokje.getY() == j && blokje.getAliveState()) {
+					aliveTeller++;
 				}
 			}
-		}		
+		}
 	}
-	return neighbour;
+
+	return aliveTeller;
 }
 
 
