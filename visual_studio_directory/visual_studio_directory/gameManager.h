@@ -90,22 +90,20 @@ int GameManager::getNeighbours(Cell cell) {
 
 	// Deze functie let niet op edge cases waar een cel al tegen de rand zit
 	// Misschien als je tegen de rand zit de cel aan de andere kant van het scherm nemen
-	for (int i = x - sideSize; i < x + sideSize; i += sideSize) { // Over alle blokjes gaan in een 3x3 zonder de middelste te pakken
-		for (int j = y - sideSize; j < y + sideSize; j += sideSize) {
-			for (Cell& blokje : cells) {
-				if (blokje.getX() == cell.getX() && blokje.getY() == cell.getY()) {
-					// Do nothing
-				}
-				else if (blokje.getX() == i && blokje.getY() == j && blokje.getAliveState()) {
-					aliveTeller++;
+	// Over alle blokjes gaan in een 3x3 zonder de middelste te pakken
+	for (int i = x - sideSize; i <= x + sideSize; i += sideSize) {
+		for (int j = y - sideSize; j <= y + sideSize; j += sideSize) {
+			for (Cell& el : this->cells) {
+				if (el.getX() != x || el.getY() != y) { // zolang we niet het middelste blokje hebben
+					if (i == el.getX() && j == el.getY() && el.getAliveState()) {
+						aliveTeller++;
+					}
 				}
 			}
 		}
 	}
-
 	return aliveTeller;
 }
-
 
 
 

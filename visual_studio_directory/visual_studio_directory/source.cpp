@@ -17,7 +17,7 @@ int main()
     
     //framecapping
     sf::Clock klokje; 
-    const sf::Time frameTime = sf::seconds(1.0f);//wordt 1 game tick
+    const sf::Time frameTime = sf::seconds(2.0f);//wordt 1 game tick
 
     //game loop
     while(window.isOpen())
@@ -49,7 +49,7 @@ int main()
 }
 
 
-void drawCells(vector<Cell> cells, sf::RenderWindow &window) {
+void drawCells(vector<Cell> cells, sf::RenderWindow &window) {//improvment: alleen de cells drawen die veranderd zijn
     int teller = 0;
     sf::Texture aliveTexture;
     sf::Texture deadTexture;
