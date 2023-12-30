@@ -3,24 +3,23 @@
 #include "cell.h"
 #include "gameManager.h"
 #include <stdexcept>
+#include <stdlib.h>
+#include <iostream>
 
-void drawCells( vector<Cell> cells, sf::RenderWindow& window);
+void drawCells(vector<Cell> cells, sf::RenderWindow& window);
 
 
 int main()
 {   
     //initialisation
-
     GameManager game; 
-    vector<Cell> cells = game.getAllCells();
-
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Fullscreen);
     
     //framecapping
     sf::Clock klokje; 
-    const sf::Time frameTime = sf::seconds(10.0f);//wordt 1 game tick
+    const sf::Time frameTime = sf::seconds(1.0f);//wordt 1 game tick
 
-    //game logic
+    //game loop
     while(window.isOpen())
     {
         sf::Event event;
@@ -34,20 +33,15 @@ int main()
                 window.close();
             }
         }
-        //frames
-
+      
         window.clear();
         sf::Time elapsed = klokje.restart();
-
-
         //content
         drawCells(game.getAllCells(), window);
-        game.nextTick();
-        //ending loop
-
         window.display();
-
+        game.nextTick();
         sf::sleep(frameTime - elapsed);
+        std::cout << "frame printed" << std::endl;
 
     }
     window.close();
@@ -75,19 +69,13 @@ void drawCells( vector<Cell> cells, sf::RenderWindow &window) {
         else {
             currentSprite = deadSprite;
         }
-        currentSprite.setOrigin(4.0f, 4.0f);//set origin to the center
         float x = cell.getX() + 0.0f;
         float y = cell.getY() + 0.0f;
-        currentSprite.setPosition(x, window.getSize().y-y);//start drawing from bottom left instead of upper left
+        currentSprite.setPosition(x, y);
         window.draw(currentSprite);
         teller++;
-        std::cout <<teller << std::endl;
+        std::cout <<"n'th box drawn: " << teller << std::endl;
     }
-
-
-
-    
-
 
 }
 

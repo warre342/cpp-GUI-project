@@ -1,15 +1,5 @@
 #pragma once
-#include <string>
-#include <iostream>
 #include <vector>
-#include <map>
-#include <unordered_set>
-#include <map>
-#include <time.h>
-#include <stdlib.h>
-#include <set>
-#include <stdexcept>
-#include <memory>
 #include "cell.h"
 /*
 Rules:
@@ -25,19 +15,20 @@ using namespace std;
 class GameManager {
 private:
 
-	int amountOfCells=0;
 	vector<Cell> cells; 
 	const static int screenSizeX = 1920;
 	const static int screenSizeY = 1080; 
-	const static int sideSize = 8;
+	const static int sideSize = 120;
 
 public:
-	//cells will be 8 by 8
+	//cells will be sideSize x SideSize
 	GameManager() {
-		for (int x = 0; x < screenSizeX; x += 8) {
-			for (int y = 0; y < screenSizeY; y += 8) {
+		for (int x = 0; x < screenSizeX; x += sideSize) {//somehow +1 zorgt ervoor dat ze er allemaal opstaan, momenteel geen zin om het uit te zoeken
+			for (int y = 0; y < screenSizeY; y += sideSize) {//volgens berekeningen moeten het 144 objects zijn maar nu heb ik 170
 				Cell blokje(x, y);
-				this->addCell(blokje);
+				if (x <= 960 + sideSize && x >= 960 -sideSize && y == 600) { blokje.maakLevend(); }
+				else if (x <= 960 && x >= 960-2*sideSize && y == 600-sideSize) { blokje.maakLevend(); }
+				cells.push_back(blokje);
 			}
 		}	
 	}
@@ -75,18 +66,19 @@ public:
 		}
 	}
 
-	void addCell(Cell cell);
 	vector<Cell> getAllCells();
+	float getSideSize();
 	vector<Cell> getNeighbours(Cell cell);
+
 
 };
 
 vector<Cell> GameManager::getAllCells() {
-	return cells;
+	return this->cells;
 }
-void GameManager::addCell(Cell cell) {
-	cells.push_back(cell);
-	amountOfCells++;
+
+float GameManager::getSideSize() {
+	return sideSize + 0.0f;
 }
 
 vector<Cell> GameManager::getNeighbours(Cell cell) {
@@ -98,7 +90,7 @@ vector<Cell> GameManager::getNeighbours(Cell cell) {
 	for (int i = x - sideSize; i < x + sideSize; i += sideSize) {//over alle blokjes gaan in een 3x3 zonder de middelste te pakken
 		for (int j = y - sideSize; j < y + sideSize; j+= sideSize) {
 			if (i != x && j != y) {
-				for (Cell &blokje : cells) {//todo:optimizen met const somehow
+				for (Cell &blokje : cells) {
 					if (blokje.getX()==i && blokje.getY()==j) {
 						neighbour.push_back(cell);
 					}
