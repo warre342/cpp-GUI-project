@@ -26,7 +26,7 @@ public:
 		for (int x = 0; x < screenSizeX; x += sideSize) {
 			for (int y = 0; y < screenSizeY; y += sideSize) {
 				Cell blokje(x, y);
-				if (x <= 960 + sideSize && x >= 960 -sideSize && y == 600-sideSize) { blokje.maakLevend(); }
+				if (x <= 960 + sideSize && x >= 960 -sideSize && y == 600-sideSize) { blokje.maakLevend(); }//hardcoded pattern
 				else if (x <= 960 && x >= 960-2*sideSize && y == 600) { blokje.maakLevend(); }
 				cells.push_back(blokje);
 			}
@@ -36,6 +36,7 @@ public:
 	void nextTick(){
 
 		vector<int> amountNeighboursAllCells;
+		amountNeighboursAllCells.reserve(cells.size());
 
 		for (const Cell &blokje : cells) {
 			amountNeighboursAllCells.push_back(getNeighbours(blokje));
@@ -94,7 +95,7 @@ int GameManager::getNeighbours(Cell cell) {
 	for (int i = x - sideSize; i <= x + sideSize; i += sideSize) {
 		for (int j = y - sideSize; j <= y + sideSize; j += sideSize) {
 			for (Cell& el : this->cells) {
-				if (el.getX() != x || el.getY() != y) { // zolang we niet het middelste blokje hebben
+				if (el.getX() != x|| el.getY() != y) { // zolang we niet het middelste blokje hebben
 					if (i == el.getX() && j == el.getY() && el.getAliveState()) {
 						aliveTeller++;
 					}
