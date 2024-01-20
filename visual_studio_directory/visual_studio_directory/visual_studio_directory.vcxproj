@@ -146,8 +146,10 @@
     <ClCompile Include="source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cell.h" />
-    <ClInclude Include="gameManager.h" />
+    <ClInclude Include="GameLogic\cell.h" />
+    <ClInclude Include="GameLogic\gameManager.h" />
+    <ClInclude Include="GuiLogic\tileGrid.h" />
+    <ClInclude Include="GuiLogic\tile.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\cellAlive.jpg" />

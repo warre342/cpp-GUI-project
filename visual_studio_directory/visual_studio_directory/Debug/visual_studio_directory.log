@@ -1,2 +1,21 @@
 ﻿  source.cpp
+C:\Users\warre\Desktop\content\github\cpp-GUI-project\visual_studio_directory\visual_studio_directory\GameLogic\gameManager.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\warre\Desktop\content\github\cpp-GUI-project\visual_studio_directory\visual_studio_directory\source.cpp(144,111): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\warre\Desktop\content\github\cpp-GUI-project\visual_studio_directory\visual_studio_directory\source.cpp(144,74): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
   visual_studio_directory.vcxproj -> C:\Users\warre\Desktop\content\github\cpp-GUI-project\visual_studio_directory\Debug\visual_studio_directory.exe
