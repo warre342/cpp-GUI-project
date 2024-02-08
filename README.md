@@ -1,4 +1,6 @@
 # Cpp-GUI-project
+## Goal
+> De goal van dit project is om een Graphical User Interface te maken in c++ om **Conway's Game of Life** te kunnen simuleren. 
 ## Running the project
 > Voor dit project heb ik gebruik gemaakt van de SFML library.
 > 
@@ -9,4 +11,9 @@
 >
 > En het tweede deel waar elke seconde de volgende sequentie van cells wordt berekend. Sluiten doe je met escape. 
 > ![image](https://github.com/warre342/cpp-GUI-project/assets/137648920/38fe1b8f-71ee-4355-84a1-4c26307a82d9)
+## Details
+> ![image](https://github.com/warre342/cpp-GUI-project/assets/137648920/76625316-7c2d-4a9a-a26f-2129cea95011)
+> 
+> De tickspeed aanpassen kan gedaan worden in source.cpp in de main functie. 
+> 
 
