@@ -30,9 +30,10 @@ int main()
 
 void startGame(GameManager &game, float tickTime ) {
 
-    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game of Life!", sf::Style::Fullscreen, sf::ContextSettings(24, 8, 0, 3, 3));
-    sf::Clock klokje;
-    const sf::Time frameTime = sf::seconds(tickTime);//wordt 1 game tick
+    sf::RenderWindow window(sf::VideoMode(1920, 1080), "Game of Life!, press escape to end", sf::Style::Fullscreen, sf::ContextSettings(24, 8, 2, 3, 2));//--
+    //sf::Clock klokje;
+    window.setFramerateLimit(tickTime);
+    //const sf::Time frameTime = sf::seconds(tickTime);//wordt 1 game tick
 
     //game loop
     while (window.isOpen())
@@ -50,21 +51,21 @@ void startGame(GameManager &game, float tickTime ) {
         }
 
         window.clear();
-        sf::Time elapsed = klokje.restart();
+        //sf::Time elapsed = klokje.restart();
         
         //content
         drawCells(game.getAllCells(), window);
         window.display();
         game.nextTick();
-        std::cout <<"time elapsed: "<< elapsed.asMilliseconds() << std::endl;
-        sf::sleep(frameTime);
-        std::cout << "frame printed" << std::endl;
+        //std::cout <<"time elapsed: "<< elapsed.asMilliseconds() << std::endl;
+        //sf::sleep(frameTime);
+        //std::cout << "frame printed" << std::endl;
 
     }
     window.close();
 
 }
-void drawCells(vector<Cell> cells, sf::RenderWindow& window) {//improvment: alleen de cells drawen die veranderd zijn
+void drawCells(vector<Cell> cells, sf::RenderWindow& window) {
     //int teller = 0;
     sf::Texture aliveTexture;
     sf::Texture deadTexture;
@@ -95,7 +96,7 @@ void drawCells(vector<Cell> cells, sf::RenderWindow& window) {//improvment: alle
 
 
 void requestSelection(TileGrid& grid) {
-    sf::RenderWindow window(sf::VideoMode(800, 450), "pattern selection", sf::Style::Default, sf::ContextSettings(24, 8, 0, 3, 3));//downsized version of 16x9 50x50 tiles
+    sf::RenderWindow window(sf::VideoMode(800, 450), "pattern selection", sf::Style::Default, sf::ContextSettings(24, 8, 2, 3, 2));//downsized version of 16x9 50x50 tiles
     //game loop
     while (window.isOpen())
     {
@@ -107,6 +108,9 @@ void requestSelection(TileGrid& grid) {
                 window.close();
             //close game if escape 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {//kan ook (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+                window.close();
+            }
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {//kan ook (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
                 window.close();
             }
             if (event.type == sf::Event::MouseButtonPressed) {

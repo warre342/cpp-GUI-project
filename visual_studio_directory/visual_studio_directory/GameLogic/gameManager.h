@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include "cell.h"
-#include "GuiLogic/tileGrid.h";
+#include "GuiLogic/tileGrid.h"
 /*
 Rules:
 
