@@ -2,9 +2,11 @@
 ## Goal
 > De goal van dit project is om een Graphical User Interface te maken in c++ om **Conway's Game of Life** te kunnen simuleren. 
 ## Running the project
-> Voor dit project heb ik gebruik gemaakt van de SFML library.
+> Voor dit project heb ik gebruik gemaakt van de SFML library die dynamicly linked is met visual studio.<br> 
+> Hiervoor moet je dus de volgende versie van visual studio gebruiken: *Visual C++ 17 (2022)*, anders ga je problemen hebben met compilen. Meer informatie hier: https://www.sfml-dev.org/tutorials/2.6/start-vc.php.<br>
 > 
-> Hierdoor moet je deze versie gebruiken van visual studio:*Visual C++ 17 (2022)*, anders ga je problemen hebben met compilen. Meer informatie hier: https://www.sfml-dev.org/tutorials/2.6/start-vc.php
+> Het runnen doe je door *visual_studio_directory.sln* te runnen en in visual studio de *Local Windows Debugger* te gebruiken. 
+> 
 ## Result
 > Het eind resultaat bestaat uit 2 delen. Het eerste deel waar je de input kan duidelijk maken zoals hieronder getoond. Als je klaar bent druk je dan op enter.
 > ![image](https://github.com/warre342/cpp-GUI-project/assets/137648920/6bfc5712-93f5-4c72-921e-92b01c7d3e70)
