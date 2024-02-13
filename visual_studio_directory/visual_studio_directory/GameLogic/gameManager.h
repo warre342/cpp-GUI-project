@@ -101,7 +101,7 @@ vector<Cell> GameManager::getAllCells() {
 float GameManager::getSideSize() {
 	return sideSize + 0.0f;
 }
-
+//modulo gebruiken
 int GameManager::getNeighbours(Cell cell) {
 	int x = cell.getX();
 	int y = cell.getY();
