@@ -4,7 +4,7 @@
 >
 > Meer uitleg over **Conway's Game of Life** hier: https://en.wikipedia.org/wiki/Conway's_Game_of_Life
 ## Running the project
-> Voor dit project heb ik gebruik gemaakt van de SFML library die dynamicly linked is met visual studio.<br> 
+> Voor dit project heb ik gebruik gemaakt van de SFML library die dynamically linked is met visual studio.<br> 
 > Hiervoor moet je dus de volgende versie van visual studio gebruiken: *Visual C++ 17 (2022)*, anders ga je problemen hebben met compilen. Meer informatie hier: https://www.sfml-dev.org/tutorials/2.6/start-vc.php.<br>
 > 
 > Het runnen doe je door *visual_studio_directory.sln* te runnen en in visual studio de *Local Windows Debugger* te gebruiken. 
