@@ -20,7 +20,7 @@
 > De tickspeed aanpassen kan gedaan worden in source.cpp in de main functie. 
 >
 ## Improvement points
-> CMake gebruiken
-> Geen build artifacts op github plaatsen  
+- CMake gebruiken
+- Geen build artifacts op github plaatsen  
 
 
