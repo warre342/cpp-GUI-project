@@ -1,7 +1,6 @@
 # Cpp-GUI-project
 ## Goal
-> De goal van dit project is om een Graphical User Interface te maken in c++ om **Conway's Game of Life** te kunnen simuleren.
->
+> De goal van dit project is om een Graphical User Interface te maken in c++ om **Conway's Game of Life** te kunnen simuleren. 
 > Meer uitleg over **Conway's Game of Life** hier: https://en.wikipedia.org/wiki/Conway's_Game_of_Life
 ## Running the project
 > Voor dit project heb ik gebruik gemaakt van de SFML library die dynamically linked is met visual studio.<br> 
@@ -19,5 +18,9 @@
 > ![image](https://github.com/warre342/cpp-GUI-project/assets/137648920/76625316-7c2d-4a9a-a26f-2129cea95011)
 > 
 > De tickspeed aanpassen kan gedaan worden in source.cpp in de main functie. 
-> 
+>
+## Improvement points
+> CMake gebruiken
+> Geen build artifacts op github plaatsen  
+
 
